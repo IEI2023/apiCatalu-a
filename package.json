@@ -1,0 +1,19 @@
+{
+  "name": "apicat",
+  "version": "1.0.0",
+  "description": "API para la obtencion o carga de datos de la comunidad de Cataluña",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.6.2"
+  }
+}
