@@ -8,10 +8,21 @@ const PORT = 3002;
 
 app.use(bodyParser.text());
 
-// Endpoint para leer JSON pasado en el body
+// Endpoint para leer XML pasado en el body y pasarlo a JSON
 app.post("/jsonFromBody", (req, res) => {
-  const jsonData = req.body;
-  res.json(jsonData);
+  try {
+    var parser = new xmltoJson.Parser();
+    parser.parseString(req.body, function (err, result) {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      const simplifiedResult = result.response.row.map((item) => {
+        res.json(item);
+      });
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
 });
 
 app.get("/jsonFromFile", (req, res) => {
